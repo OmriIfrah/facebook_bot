@@ -27,15 +27,12 @@ let getWebhook = (req, res) => {
             // Respond with the challenge token from the request
             console.log("WEBHOOK_VERIFIED");
             res.status(200).send(challenge);
-            return res.send("WEBHOOK_VERIFIED");
         } else {
             console.log("444444444");
             // Respond with '403 Forbidden' if verify tokens do not match
             res.sendStatus(403);
-            return res.send("44444444444444444");
         }
     }
-    return res.send("Hello webhoookkk");
 }
 
 let postWebhook = (req, res) => {
