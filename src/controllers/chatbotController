@@ -11,7 +11,7 @@ let test = (req, res) => {
 }
 
 let getWebhook = (req, res) => {
-    
+  return res.send("Hello webhoookkk");
     let VERIFY_TOKEN = MY_VERIFY_TOKEN;
 
     // Parse the query params
