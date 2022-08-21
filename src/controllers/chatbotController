@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
+console.log(MY_VERIFY_TOKEN);
 
 let test = (req, res) => {
     return res.send("Hello again");
