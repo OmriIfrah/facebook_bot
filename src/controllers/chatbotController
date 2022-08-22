@@ -39,6 +39,8 @@ let postWebhook = (req, res) => {
   console.log("998989898989898989");
   // Parse the request body from the POST
   let body = req.body;
+  console.log(`\u{1F7EA} Received webhook:`);
+  console.dir(body, { depth: null });
 
   // Check the webhook event is from a Page subscription
   if (body.object === 'page') {
