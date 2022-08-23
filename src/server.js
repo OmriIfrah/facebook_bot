@@ -12,6 +12,14 @@ viewEngine(app);
 //config
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({express: true}));
+app.use((req,res,next) => {
+    console.log(req.method + " " + req.url);
+    if(req.body)
+    {
+        console.log(JSON.stringify(req.body,null,2))
+    }
+    next();
+})
 
 //init web routes
 initWebRoutes(app);
