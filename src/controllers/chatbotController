@@ -132,6 +132,7 @@ function handleMessage(sender_psid, received_message) {
   } 
   
   // Send the response message
+  console.log(response.text)
   callSendAPI(sender_psid, response);       
 }
 
