@@ -1,7 +1,7 @@
 const bodyParser = require("body-parser");
 //const request = require('request');
-
 require("dotenv").config();
+
 const request = require('request');
 
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
