@@ -93,7 +93,7 @@ let postWebhook = (req, res) => {
 function handleMessage(sender_psid, received_message) {
 
   let response;
-  
+  console.log("989898989898989898989")
   // Checks if the message contains text
   if (received_message.text) {    
     // Create the payload for a basic text message, which
@@ -104,6 +104,7 @@ function handleMessage(sender_psid, received_message) {
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
+    console.log("lalalalalallalalalal125489484646484")
     response = {
       "attachment": {
         "type": "template",
@@ -132,7 +133,7 @@ function handleMessage(sender_psid, received_message) {
   } 
   
   // Send the response message
-  console.log(response.text)
+  
   callSendAPI(sender_psid, response);       
 }
 
