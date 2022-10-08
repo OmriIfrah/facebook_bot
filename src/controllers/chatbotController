@@ -55,7 +55,7 @@ let postWebhook = (req, res) => {
       response = {
         "text": `מה השם שלך?`
       }
-      callSendAPI(sender_psid, response); 
+      //callSendAPI(sender_psid, response); 
     
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
