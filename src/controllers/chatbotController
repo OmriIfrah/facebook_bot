@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 
 const request = require('request');
+//let massages = ["מה השם שלך?", "נושא הפניה?"];
 
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
 console.log(MY_VERIFY_TOKEN);
@@ -50,6 +51,11 @@ let postWebhook = (req, res) => {
       // Get the sender PSID
       let sender_psid = webhook_event.sender.id;
       console.log('Sender PSID: ' + sender_psid);
+
+      response = {
+        "text": `מה השם שלך?`
+      }
+      callSendAPI(sender_psid, response); 
     
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
@@ -71,7 +77,7 @@ let postWebhook = (req, res) => {
 }
 
 // Handles messages events
-/*function handleMessage(sender_psid, received_message) {
+function handleMessage(sender_psid, received_message) {
 
   let response;
   // Checks if the message contains text
@@ -115,21 +121,12 @@ let postWebhook = (req, res) => {
   // Send the response message
   
   callSendAPI(sender_psid, response);       
-}*/
+}
 
 function firstTrait(nlp, name) {
   return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
 }
 
-function handleMessage(sender_psid, message) {
-  // check greeting is here and is confident
-  const greeting = firstTrait(message.nlp, 'wit$greetings');
-  if (greeting && greeting.confidence > 0.8) {
-    callSendAPI(sender_psid,'Hi there!');
-  } else { 
-    callSendAPI(sender_psid,"no understand")
-  }
-}
 
 
 // Handles messaging_postbacks events
