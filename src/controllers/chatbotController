@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 
 const request = require('request');
-//let massages = ["מה השם שלך?", "נושא הפניה?"];
+let index = 0;
+let massages = ["מה השם שלך?", "נושא הפניה?"];
 
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
 console.log(MY_VERIFY_TOKEN);
@@ -85,7 +86,8 @@ function handleMessage(sender_psid, received_message) {
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
     response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
+      "text": `"${handleText(received_message.text)}"`
+      //"text": `You sent the message: "${received_message.text}". Now send me an attachment!`
     }
     console.log(received_message.text);
   } else if (received_message.attachments) {
@@ -144,6 +146,12 @@ function handlePostback(sender_psid, received_postback) {
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
 }
+
+function handleText(text) {
+  index++;
+  if (index < massages.length)
+    return massages[i-1];
+  }
 
 
 // Sends response messages via the Send API
