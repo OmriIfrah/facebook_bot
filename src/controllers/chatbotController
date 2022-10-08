@@ -52,11 +52,6 @@ let postWebhook = (req, res) => {
       // Get the sender PSID
       let sender_psid = webhook_event.sender.id;
       console.log('Sender PSID: ' + sender_psid);
-
-      response = {
-        "text": `מה השם שלך?`
-      }
-      //callSendAPI(sender_psid, response); 
     
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
@@ -86,8 +81,7 @@ function handleMessage(sender_psid, received_message) {
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
     response = {
-      "text": `"${handleText(received_message.text)}"`
-      //"text": `You sent the message: "${received_message.text}". Now send me an attachment!`
+      "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
     }
     console.log(received_message.text);
   } else if (received_message.attachments) {
