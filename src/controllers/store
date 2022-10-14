@@ -21,10 +21,59 @@ class User {
         this.step += 1;
     }
 
+    set_by_step(text)
+    {
+        switch (step) {
+        case 1:
+            this.name = text;
+            break;
+        case 2:
+            this.subject = text;
+            break;
+        case 3:
+            this.course = text;
+            break;
+        case 4:
+            this.teacher_name = text;
+            break;
+        case 5:
+            this.campus = text;
+            break;
+        case 6:
+            this.teacher_name = text;
+            break;
+        case 7:
+            this.course = text;
+            break;
+        case 8:
+            this.year = text;
+            break;
+        case 9:
+            this.previous_application = text;
+            break;
+        case 10:
+            this.phone_number= text;
+            break;
+        case 11:
+            this.sex = text;
+            break;
+        case 12:
+            this.mail = text;
+            put_in_json()
+            break;
+        default:
+        // code block
+        }
+    }
 
-  }
+}
 
-switch (step) {
+put_in_json()
+{
+
+}
+
+/*switch (step) {
     case 0:
         messege = "מה השם שלך?";
         break;
@@ -63,4 +112,4 @@ switch (step) {
         break;
     default:
         // code block
-}
+}*/
