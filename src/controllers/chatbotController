@@ -152,7 +152,7 @@ function handlePostback(sender_psid, received_postback) {
   {
     response = { "text": "Oops, try sending another image." }
   }
-  else if (payload === 'התחל פנייה') 
+  else if (payload === 'start') 
   {
     response = { "text": "התחל פנייה" }
   }
