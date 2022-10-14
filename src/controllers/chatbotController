@@ -1,6 +1,18 @@
+//import store from "../controllers/store";
+
 const bodyParser = require("body-parser");
-//const request = require('request');
+
 require("dotenv").config();
+
+//const store = {}
+// if( store[sid] ){
+//   handleStep(sid,store[sid].step)
+// }else{
+//   store[sid] = {
+//     step: 0,
+//     answers:[],
+//   }
+// }
 
 const request = require('request');
 let index = 0;
@@ -132,10 +144,21 @@ function handlePostback(sender_psid, received_postback) {
   // Get the payload for the postback
   let payload = received_postback.payload;
   // Set the response based on the postback payload
-  if (payload === 'yes') {
+  if (payload === 'yes') 
+  {
     response = { "text": "Thanks!" }
-  } else if (payload === 'no') {
+  } 
+  else if (payload === 'no') 
+  {
     response = { "text": "Oops, try sending another image." }
+  }
+  else if (payload === 'התחל פנייה') 
+  {
+    response = { "text": "התחל פנייה" }
+  }
+  else if (payload === 'get_started') 
+  {
+    response = { "text": 'get_started' }
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);

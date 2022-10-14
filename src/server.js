@@ -5,9 +5,6 @@ import viewEngine from "./config/viewEngine"
 import initWebRoutes from "./routes/web"
 
 let app = express();
-const mongoose = require('mongoose')
-
-const uri = 'mongodb+srv://omri:Omri123456@chatbotcluster.chsxgah.mongodb.net/?retryWrites=true&w=majority'
 
 //config view engine
 viewEngine(app);
@@ -32,14 +29,3 @@ let port = process.env.PORT || 8080;
 app.listen(port, ()=> {
     console.log("App is running at port : "+ port);
 });
-
-async function connect() {
-    try {
-        await mongoose.connect(uri);
-        console.log("Connected to MongoDB");
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-connect();
