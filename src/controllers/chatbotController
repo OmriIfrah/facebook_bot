@@ -15,8 +15,6 @@ const store = {}
 // }
 
 const request = require('request');
-let index = 0;
-let massages = ["מה השם שלך?", "נושא הפניה?"];
 
 const MY_VERIFY_TOKEN = process.env.MY_VERIFY_TOKEN;
 console.log(MY_VERIFY_TOKEN);
@@ -63,10 +61,10 @@ let postWebhook = (req, res) => {
     
       // Get the sender PSID
       let sender_psid = webhook_event.sender.id;
-      if(!(store[sender_psid]))
-      {
-        store[sender_psid] = new User();
-      }
+      //if(!(store[sender_psid]))
+      //{
+      //  store[sender_psid] = new User();
+      //}
       console.log('Sender PSID: ' + sender_psid);
   
       // Check if the event is a message or postback and
