@@ -138,13 +138,13 @@ function handleMessage(sender_psid, received_message) {
   }
 
     response = {
-      "text": "${messege}"
+      "text": messege
     }
     console.log(received_message.text);
   }
   // Send the response message
-  if(store[sender_psid])
-    store[sender_psid].step_promotion();
+  //if(store[sender_psid])
+    //store[sender_psid].step_promotion();
 
   callSendAPI(sender_psid, response);       
 }
@@ -168,8 +168,8 @@ function handlePostback(sender_psid, received_postback) {
   if (payload === 'start') 
   {
     response = { "text": " שלום הגעתם לבוט אגודת הסטודנטים של תל חי יש לענות על שאלות הבוט. \n מה השם שלך?" }
-    if(store[sender_psid])
-      store[sender_psid].step_promotion();
+    //if(store[sender_psid])
+      //store[sender_psid].step_promotion();
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
