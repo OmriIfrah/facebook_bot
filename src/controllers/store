@@ -1,9 +1,3 @@
-class Store {
-  constructor() {
-    this.data = {};
-  }
-}
-
 class User {
     constructor() 
     {
