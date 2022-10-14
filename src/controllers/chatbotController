@@ -106,6 +106,9 @@ function firstTrait(nlp, name) {
   return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
 }
 
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
 
 
 // Handles messaging_postbacks events
@@ -124,7 +127,7 @@ function handlePostback(sender_psid, received_postback) {
   
   if (payload === 'start') 
   {
-    response = { "text": "מה השם שלך?" }
+    delay(1).then(() => response = { "text": "מה השם שלך?" });
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
