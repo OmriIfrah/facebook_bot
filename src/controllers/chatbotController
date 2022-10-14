@@ -96,7 +96,7 @@ function handleMessage(sender_psid, received_message) {
       "text": `שלחת הודעה: "${received_message.text}".!`
     }
     console.log(received_message.text);
-  
+  }
   // Send the response message
   
   callSendAPI(sender_psid, response);       
