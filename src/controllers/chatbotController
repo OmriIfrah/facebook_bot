@@ -120,14 +120,7 @@ function handlePostback(sender_psid, received_postback) {
   // Set the response based on the postback payload
   if (payload === 'start') 
   {
-    response = { "text": " שלום הגעתם לבוט אגודת הסטודנטים של תל חי יש לענות על שאלות הבוט:" }
-  }
-  // Send the message to acknowledge the postback
-  callSendAPI(sender_psid, response);
-  
-  if (payload === 'start') 
-  {
-    delay(1).then(() => response = { "text": "מה השם שלך?" });
+    response = { "text": " שלום הגעתם לבוט אגודת הסטודנטים של תל חי יש לענות על שאלות הבוט: \n מה השם שלך?" }
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
