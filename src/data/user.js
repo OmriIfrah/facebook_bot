@@ -25,6 +25,55 @@ export class User {
     {
         return this.step;
     }
+
+    set_by_step(text)
+    {
+        switch (step) {
+        case 1:
+            this.name = text;
+            break;
+        case 2:
+            this.subject = text;
+            break;
+        case 3:
+            this.course = text;
+            break;
+        case 4:
+            this.teacher_name = text;
+            break;
+        case 5:
+            this.campus = text;
+            break;
+        case 6:
+            this.recived = text;
+            break;
+        case 7:
+            this.course = text;
+            break;
+        case 8:
+            this.year = text;
+            break;
+        case 9:
+            this.previous_application = text;
+            break;
+        case 10:
+            this.phone_number= text;
+            break;
+        case 11:
+            this.sex = text;
+            break;
+        case 12:
+            this.mail = text;
+            break;
+        default:
+            break;
+        }
+    }
+
+    to_string()
+    {
+        console.log("name = "+ this.name + ", subject = " + this.subject + ", rec= " + this.recived +  ", mail= " + this.mail);
+    }
 }
 
 /*function user1(sender_id) 

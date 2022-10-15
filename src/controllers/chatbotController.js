@@ -92,7 +92,11 @@ function handleMessage(sender_psid, received_message) {
     let message = "לפני";
     if(store[sender_psid])
     {
-      switch (store[sender_psid].get_step()) {
+      let step = store[sender_psid].get_step()
+      if (step > 0){
+        store[sender_psid].set_by_step(received_message.text);
+      }
+      switch (step) {
         case 0:
           message = "מה השם שלך?";
           break;
@@ -130,7 +134,9 @@ function handleMessage(sender_psid, received_message) {
           message = "אימייל?";
           break;
         default:
-          message = "לא הבנתי";
+          message = "פנייתך נרשמה";
+          store[sender_psid].to_string();
+          delete store[sender_psid];
           break;
       }
 
@@ -155,8 +161,8 @@ function handlePostback(sender_psid, received_postback) {
   if (payload === 'start') 
   {
     response = { "text": " שלום הגעתם לבוט אגודת הסטודנטים של תל חי יש לענות על שאלות הבוט. \n מה השם שלך?" }
-    //if(store[sender_psid])
-      //store[sender_psid].step_promotion();
+    if(store[sender_psid])
+      store[sender_psid].step_promotion();
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
