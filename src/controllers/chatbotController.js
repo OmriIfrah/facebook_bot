@@ -1,18 +1,13 @@
-//import store from "../controllers/store";
+
+//import user from "../data/user";
+
+import {User} from "../data/user";
 
 const bodyParser = require("body-parser");
 
 require("dotenv").config();
 
 const store = {}
-// if( store[sid] ){
-//   handleStep(sid,store[sid].step)
-// }else{
-//   store[sid] = {
-//     step: 0,
-//     answers:[],
-//   }
-// }
 
 const request = require('request');
 
@@ -61,10 +56,10 @@ let postWebhook = (req, res) => {
     
       // Get the sender PSID
       let sender_psid = webhook_event.sender.id;
-      //if(!(store[sender_psid]))
-      //{
-      //  store[sender_psid] = new User();
-      //}
+      if(!(store[sender_psid]))
+      {
+        store[sender_psid] = new User(sender_psid);
+      }
       console.log('Sender PSID: ' + sender_psid);
   
       // Check if the event is a message or postback and
