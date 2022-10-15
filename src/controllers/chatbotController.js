@@ -133,8 +133,8 @@ function handleMessage(sender_psid, received_message) {
           message = "אימייל?";
           break;
         case 12:
-          //let query = store[sender_psid].get_query();
-          //mondayController.start_fetch();
+          let query = store[sender_psid].get_query();
+          mondayController.start_fetch(query);
           message = "תודה, פנייתך נרשמה בהצלחה";
           delete store[sender_psid];
           break;
