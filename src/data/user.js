@@ -72,7 +72,7 @@ export class User {
 
     to_string()
     {
-        return "name = ${this.name} , subject = ${this.subject} , rec=  ${this.recived} , mail=  ${this.mail}";
+        return `name = ${this.name} , subject = ${this.subject} , rec=  ${this.recived} , mail=  ${this.mail}`;
     }
 }
 
