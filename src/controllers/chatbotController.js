@@ -89,53 +89,53 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
-    let message = "לפני"
+    let message = "לפני";
     if(store[sender_psid])
     {
       switch (store[sender_psid].get_step()) {
         case 0:
-            messege = "מה השם שלך?";
-            break;
+          message = "מה השם שלך?";
+          break;
         case 1:
-            messege = "מה נושא הפנייה?";
-            break;
+          message = "מה נושא הפנייה?";
+          break;
         case 2:
-            messege = "על איזה קורס מדובר?";
-            break;
+          message = "על איזה קורס מדובר?";
+          break;
         case 3:
-            messege = "מה שם המרצה?";
-            break;
+          message = "מה שם המרצה?";
+          break;
         case 4:
-            messege = "באיזה קמפוס וכיתה נערכה הבחינה?";
-            break;
+          message = "באיזה קמפוס וכיתה נערכה הבחינה?";
+          break;
         case 5:
-            messege = "אנא כתבו את פנייתכם עכשיו";
-            break;
+          message = "אנא כתבו את פנייתכם עכשיו";
+          break;
         case 6:
-            messege = "באיזה חוג?";
-            break;
+          message = "באיזה חוג?";
+          break;
         case 7:
-            messege = "שנה?";
-            break;
+          message = "שנה?";
+          break;
         case 8:
-            messege = "האם פנית לגורם מכללה בנושא?";
-            break;
+          message = "האם פנית לגורם מכללה בנושא?";
+          break;
         case 9:
-            messege = "מספר טלפון?";
-            break;
+          message = "מספר טלפון?";
+          break;
         case 10:
-            messege = "לשון הפנייה? כיצד תרצו שנפנה אליכם?";
-            break;
+          message = "לשון הפנייה? כיצד תרצו שנפנה אליכם?";
+          break;
         case 11:
-            messege = "אימייל?";
-            break;
+          message = "אימייל?";
+          break;
         default:
-            messege = "לא הבנתי";
-            break;
+          message = "לא הבנתי";
+          break;
       }
 
       response = {
-        "text": messege
+        "text": message
       }
     } 
     console.log(received_message.text);
