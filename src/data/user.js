@@ -28,7 +28,7 @@ export class User {
 
     set_by_step(text)
     {
-        switch (step) {
+        switch (this.step) {
         case 1:
             this.name = text;
             break;
