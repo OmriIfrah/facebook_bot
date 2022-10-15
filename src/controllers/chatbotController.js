@@ -89,56 +89,57 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
-    switch (1) {
-      case 0:
-          messege = "מה השם שלך?";
-          break;
-      case 1:
-          messege = "מה נושא הפנייה?";
-          break;
-      case 2:
-          messege = "על איזה קורס מדובר?";
-          break;
-      case 3:
-          messege = "מה שם המרצה?";
-          break;
-      case 4:
-          messege = "באיזה קמפוס וכיתה נערכה הבחינה?";
-          break;
-      case 5:
-          messege = "אנא כתבו את פנייתכם עכשיו";
-          break;
-      case 6:
-          messege = "באיזה חוג?";
-          break;
-      case 7:
-          messege = "שנה?";
-          break;
-      case 8:
-          messege = "האם פנית לגורם מכללה בנושא?";
-          break;
-      case 9:
-          messege = "מספר טלפון?";
-          break;
-      case 10:
-          messege = "לשון הפנייה? כיצד תרצו שנפנה אליכם?";
-          break;
-      case 11:
-          messege = "אימייל?";
-          break;
-      default:
-          // code block
-  }
+    if(store[sender_psid])
+    {
+      switch (store[sender_psid].get_step()) {
+        case 0:
+            messege = "מה השם שלך?";
+            break;
+        case 1:
+            messege = "מה נושא הפנייה?";
+            break;
+        case 2:
+            messege = "על איזה קורס מדובר?";
+            break;
+        case 3:
+            messege = "מה שם המרצה?";
+            break;
+        case 4:
+            messege = "באיזה קמפוס וכיתה נערכה הבחינה?";
+            break;
+        case 5:
+            messege = "אנא כתבו את פנייתכם עכשיו";
+            break;
+        case 6:
+            messege = "באיזה חוג?";
+            break;
+        case 7:
+            messege = "שנה?";
+            break;
+        case 8:
+            messege = "האם פנית לגורם מכללה בנושא?";
+            break;
+        case 9:
+            messege = "מספר טלפון?";
+            break;
+        case 10:
+            messege = "לשון הפנייה? כיצד תרצו שנפנה אליכם?";
+            break;
+        case 11:
+            messege = "אימייל?";
+            break;
+        default:
+            // code block
+      }
 
-    response = {
-      "text": messege
-    }
+      response = {
+        "text": messege
+      }
+    } 
     console.log(received_message.text);
+    store[sender_psid].step_promotion();
   }
   // Send the response message
-  //if(store[sender_psid])
-    //store[sender_psid].step_promotion();
-
   callSendAPI(sender_psid, response);       
 }
 

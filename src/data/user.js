@@ -20,6 +20,11 @@ export class User {
     step_promotion() {
         this.step += 1;
     }
+    
+    get_step() 
+    {
+        return this.step;
+    }
 }
 
 /*function user1(sender_id) 
