@@ -89,6 +89,7 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
+    let message = "לפני"
     if(store[sender_psid])
     {
       switch (store[sender_psid].get_step()) {
@@ -129,7 +130,8 @@ function handleMessage(sender_psid, received_message) {
             messege = "אימייל?";
             break;
         default:
-            // code block
+            messege = "לא הבנתי";
+            break;
       }
 
       response = {
