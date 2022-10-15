@@ -74,6 +74,22 @@ export class User {
     {
         return `name = ${this.name} , subject = ${this.subject} , rec=  ${this.recived} , mail=  ${this.mail}`;
     }
+
+    get_query()
+    {
+        let vars = {
+            "myItemName" : `Item = ${this.sender_id}`,
+            "columnVals" : JSON.stringify({
+              "date4" : {"date" : "2020-08-27"},
+              "text" : this.name,
+              "text2" : this.subject,
+              "text3" : this.course,
+              "text4" : this.teacher_name,
+              "text5" : this.campus
+            })
+          };
+        return vars;
+    }
 }
 
 /*function user1(sender_id) 
