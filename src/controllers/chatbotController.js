@@ -134,8 +134,8 @@ function handleMessage(sender_psid, received_message) {
           message = "אימייל?";
           break;
         default:
-          message = "פנייתך נרשמה";
-          store[sender_psid].to_string();
+          message = store[sender_psid].to_string();
+          //store[sender_psid].to_string();
           delete store[sender_psid];
           break;
       }
@@ -145,6 +145,9 @@ function handleMessage(sender_psid, received_message) {
       }
     } 
     console.log(received_message.text);
+  }
+  if(store[sender_psid])
+  {
     store[sender_psid].step_promotion();
   }
   // Send the response message
