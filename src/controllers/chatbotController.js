@@ -1,7 +1,5 @@
-
-//import user from "../data/user";
-
 import {User} from "../data/user";
+//import mondayController from "../controllers/mondayController";
 
 const bodyParser = require("body-parser");
 
@@ -40,6 +38,19 @@ let getWebhook = (req, res) => {
 }
 
 let postWebhook = (req, res) => {
+  
+const api_key = "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjExNTM5MzU1MSwidWlkIjoyMjM5MDcwMiwiaWFkIjoiMjAyMS0wNi0yOVQxNDo1MjoxNy4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6OTExMDA5NiwicmduIjoidXNlMSJ9.omzcoKrTHw63_L1ctkCQla6RuNeZWaR7WEBU8jP1k58";
+
+fetch ("https://api.monday.com/v2", {
+  method: 'post',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization' : api_key
+   },
+   body: JSON.stringify({
+     'query' : '{ boards (limit:1) {3316014705} }'
+   })
+  });
   // Parse the request body from the POST
   let body = req.body;
 
@@ -133,9 +144,12 @@ function handleMessage(sender_psid, received_message) {
         case 11:
           message = "אימייל?";
           break;
+        case 12:
+          message = "תודה, פנייתך נרשמה בהצלחה";
+          delete store[sender_psid];
+          break;
         default:
-          message = store[sender_psid].to_string();
-          //store[sender_psid].to_string();
+          message = "מצטער לא הבנתי אנא התחל מהתחלה";
           delete store[sender_psid];
           break;
       }
