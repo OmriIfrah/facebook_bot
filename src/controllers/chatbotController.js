@@ -55,22 +55,20 @@ let postWebhook = (req, res) => {
       // Get the sender PSID
       let sender_psid = webhook_event.sender.id;
       console.log('Sender PSID: ' + sender_psid);
-  
-      // Check if the event is a message or postback and
-      // pass the event to the appropriate handler function
-      if (webhook_event.message) {
-        if(!(store[sender_psid]))
-        {
-          store[sender_psid] = new User(sender_psid);
-        }
-        handleMessage(sender_psid, webhook_event.message);        
-      } 
-      else if (webhook_event.postback)
+      if ((!webhook_event.message) || (!webhook_event.postback))
       {
         if(!(store[sender_psid]))
         {
           store[sender_psid] = new User(sender_psid);
         }
+      }
+      // Check if the event is a message or postback and
+      // pass the event to the appropriate handler function
+      if (webhook_event.message) {
+        handleMessage(sender_psid, webhook_event.message);        
+      } 
+      else if (webhook_event.postback)
+      {
         handlePostback(sender_psid, webhook_event.postback);
       }
       
