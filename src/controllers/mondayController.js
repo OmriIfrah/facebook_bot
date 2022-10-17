@@ -29,6 +29,7 @@ module.exports = {
 
 function start_fetch(vars) {
   // Construct the message body
+  let query5 = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:3316014705, item_name:$myItemName, column_values:$columnVals) { id } }';
   let request_body = JSON.stringify({
     'query' : query5,
     'variables' : JSON.stringify(vars)
