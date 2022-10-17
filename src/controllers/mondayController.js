@@ -34,12 +34,19 @@ module.exports = {
   close_conn: close_conn,
 }
 
+const abortEventListener = (event) => {
+  console.log(signal.aborted); // true
+  console.log(signal.reason); // Hello World
+};
+
 function close_conn()
 {
   signal.addEventListener("abort", abortEventListener);
   controller.abort("Hello World");
   signal.removeEventListener("abort", abortEventListener);
 }
+
+
 
 /*function start_fetch(vars) {
   // Construct the message body
