@@ -40,9 +40,9 @@ function start_fetch(vars) {
     "method": "POST",
     headers: {
       'Content-Type': 'application/json',
-      'Authorization' : api_key
+      'Authorization' : api_key,
   },
-    "json": request_body
+    "body": request_body
   }, (err, res, body) => {
     if (!err) {
       console.log('message sent!')
