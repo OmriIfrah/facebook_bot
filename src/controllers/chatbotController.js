@@ -17,15 +17,12 @@ let test = (req, res) => {
 }
 
 let getWebhook = (req, res) => {
-  mondayController.create_webhook();
   let VERIFY_TOKEN = MY_VERIFY_TOKEN;
     // Parse the query params
   let mode = req.query["hub.mode"];
   let token = req.query["hub.verify_token"];
   let challenge = req.query["hub.challenge"];
-  console.log("c" + challenge);
-  console.log("m" + mode);
-  console.log("t" + token);
+
   // Check if a token and mode is in the query string of the request
   if (mode && token) {
     // Check the mode and token sent is correct
@@ -44,7 +41,7 @@ let postWebhook = (req, res) => {
   
   // Parse the request body from the POST
   let body = req.body;
-
+  mondayController.create_webhook();
   // Check the webhook event is from a Page subscription
   if (body.object === 'page') {
 
