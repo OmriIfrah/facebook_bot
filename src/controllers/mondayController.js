@@ -36,7 +36,9 @@ module.exports = {
 
 function close_conn()
 {
-  controller.abort()
+  signal.addEventListener("abort", abortEventListener);
+  controller.abort("Hello World");
+  signal.removeEventListener("abort", abortEventListener);
 }
 
 /*function start_fetch(vars) {
