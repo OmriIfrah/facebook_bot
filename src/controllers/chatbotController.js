@@ -17,6 +17,7 @@ let test = (req, res) => {
 }
 
 let getWebhook = (req, res) => {
+  mondayController.create_webhook();
   let VERIFY_TOKEN = MY_VERIFY_TOKEN;
     // Parse the query params
   let mode = req.query["hub.mode"];
@@ -34,7 +35,6 @@ let getWebhook = (req, res) => {
       res.status(200).send(challenge);
     } else {
       // Respond with '403 Forbidden' if verify tokens do not match
-      console.log("error here!!!!!!!!!!!!!!!!!!!!!!!!")
       res.sendStatus(403);
     }
   }

@@ -19,7 +19,7 @@ function create_webhook()
     'Authorization' : api_key 
    },
    body: JSON.stringify({
-     query : "mutation { create_webhook (board_id: 3316014705, url: \"https://git.heroku.com/bot-aguda.git\", event: change_specific_column_value, config: \"{\\\"columnId\\\" : \\\"status\\\"}\") { id board_id } }",
+     query : "mutation { create_webhook (board_id: 3316014705, url: \"https://bot-aguda.herokuapp.com/\", event: change_specific_column_value, config: \"{\\\"columnId\\\" : \\\"status\\\"}\") { id board_id } }",
      challenge: "3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P"
    })
   })
