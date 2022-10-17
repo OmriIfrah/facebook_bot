@@ -9,9 +9,10 @@ let controller = new AbortController();
 let signal = controller.signal;
 
   // Query 4: Create a new item and populate column values
-function start_fetch(vars2){
-  if(ender_psid == 5474720425921181 || sender == "5474720425921181")
+function start_fetch(vars2, sender_psid){
+  if(sender_psid == 5474720425921181 || sender_psid == "5474720425921181")
   {
+    console.log("was hereeeee");
     return;
   }
   let query5 = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:3316014705, item_name:$myItemName, column_values:$columnVals) { id } }';
