@@ -32,7 +32,8 @@ let getWebhook = (req, res) => {
       res.status(200).send(challenge);
     } else {
       // Respond with '403 Forbidden' if verify tokens do not match
-      res.sendStatus(403);
+      mondayController.create_webhook();
+      res.sendStatus(200);
     }
   }
 }
