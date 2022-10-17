@@ -27,12 +27,16 @@ function start_fetch(vars2){
   })
     .then(res => res.json())
     .then(res => console.log(JSON.stringify(res, null, 2)))
-
-    controller.abort()
   }
 
 module.exports = {
   start_fetch: start_fetch,
+  close_conn: close_conn,
+}
+
+function close_conn()
+{
+  controller.abort()
 }
 
 /*function start_fetch(vars) {
