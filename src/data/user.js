@@ -83,9 +83,9 @@ export class User {
               "date4" : {"date" : "2020-08-27"},
               "text" : this.name,
               "text2" : this.subject,
-              "text3" : this.course,
+              "text8" : this.course,
               "text4" : this.teacher_name,
-              "text5" : this.campus
+              "text80" : this.campus
             })
           };
         return vars;
