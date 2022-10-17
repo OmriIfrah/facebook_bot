@@ -22,7 +22,7 @@ let getWebhook = (req, res) => {
   let mode = req.query["hub.mode"];
   let token = req.query["hub.verify_token"];
   let challenge = req.query["hub.challenge"];
-
+  debugger;
   // Check if a token and mode is in the query string of the request
   if (mode && token) {
     // Check the mode and token sent is correct
@@ -32,7 +32,6 @@ let getWebhook = (req, res) => {
       res.status(200).send(challenge);
     } else {
       // Respond with '403 Forbidden' if verify tokens do not match
-      mondayController.create_webhook();
       console.log("error here!!!!!!!!!!!!!!!!!!!!!!!!")
       res.sendStatus(403);
     }
