@@ -134,8 +134,7 @@ function handleMessage(sender_psid, received_message) {
           break;
         case 12:
           let query = store[sender_psid].get_query();
-          mondayController.start_fetch(query);
-          mondayController.close_conn();
+          mondayController.start_fetch(query, sender_psid);
           console.log("send fetch! ><><><<><><><><><<><><><><><><<><><><><><<>><><><><><><><><><><><<><><><<><><><><><<><><<><><><><<>")
           message = "תודה, פנייתך נרשמה בהצלחה";
           delete store[sender_psid];

@@ -10,8 +10,11 @@ let signal = controller.signal;
 
   // Query 4: Create a new item and populate column values
 function start_fetch(vars2){
+  if(ender_psid == 5474720425921181 || sender == "5474720425921181")
+  {
+    return;
+  }
   let query5 = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:3316014705, item_name:$myItemName, column_values:$columnVals) { id } }';
-  let sender = "karin"
   let vars = vars2;
   fetch ("https://api.monday.com/v2", {
       method: 'post',
@@ -31,20 +34,8 @@ function start_fetch(vars2){
 
 module.exports = {
   start_fetch: start_fetch,
-  close_conn: close_conn,
 }
 
-const abortEventListener = (event) => {
-  console.log(signal.aborted); // true
-  console.log(signal.reason); // Hello World
-};
-
-function close_conn()
-{
-  signal.addEventListener("abort", abortEventListener);
-  controller.abort("Hello World");
-  signal.removeEventListener("abort", abortEventListener);
-}
 
 
 
