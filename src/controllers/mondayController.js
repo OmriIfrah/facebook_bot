@@ -10,20 +10,6 @@ let signal = controller.signal;
 
 let challenge = {"challenge": "3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P"};
 
-function create_webhook()
-{
-  fetch ("https://api.monday.com/v2", {
-  method: 'post',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization' : api_key 
-   },
-   body: JSON.stringify({
-     query : "mutation { create_webhook (board_id: 3316014705, url: \"https://bot-aguda.herokuapp.com/\", event: change_specific_column_value, config: \"{\\\"columnId\\\" : \\\"status\\\"}\") { id board_id } }",
-     challenge: "3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P"
-   })
-  })
-}
 
 
   // Query 4: Create a new item and populate column values
