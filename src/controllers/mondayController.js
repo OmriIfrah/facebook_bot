@@ -9,11 +9,33 @@ let controller = new AbortController();
 let signal = controller.signal;
 
 
-function challange(req, res)
+async function challange(req, res)
 {
   console.log(JSON.stringify(req.body, 0, 2)); 
   res.status(200).send(req.body);
+
+  //// if event
+  const pulseId = req.body.event.pulseId;
+
+  let query1 = `query{ items (ids: ${pulseId}) { column_values { id type value text } } }`
+
+  const data = await fetch("https://api.monday.com/v2",{
+    method:"post",
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : api_key
+    },
+    body:JSON.stringify({
+      'query' : query1,
+    })
+  }).then(res=>res.json())
+  // call send API
+  // const senderId = data.
+
+
 }
+
+
 
   // Query 4: Create a new item and populate column values
 function start_fetch(vars2, sender_psid){
@@ -21,6 +43,7 @@ function start_fetch(vars2, sender_psid){
   {
     return;
   }
+  let query1 = 'query{ items (ids: 3382942348) { column_values { id type value text } } }'
   let query5 = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:3316014705, item_name:$myItemName, column_values:$columnVals) { id } }';
   let vars = vars2;
   fetch ("https://api.monday.com/v2", {
