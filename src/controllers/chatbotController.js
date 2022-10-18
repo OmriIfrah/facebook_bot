@@ -41,7 +41,6 @@ let postWebhook = (req, res) => {
   
   // Parse the request body from the POST
   let body = req.body;
-  mondayController.create_webhook();
   // Check the webhook event is from a Page subscription
   if (body.object === 'page') {
 
@@ -136,7 +135,7 @@ function handleMessage(sender_psid, received_message) {
         case 12:
           let query = store[sender_psid].get_query();
           mondayController.start_fetch(query, sender_psid);
-          console.log("send fetch! ><><><<><><><><><<><><><><><><<><><><><><<>><><><><><><><><><><><<><><><<><><><><><<><><<><><><><<>")
+          //console.log("send fetch! ><><><<><><><><><<><><><><><><<><><><><><<>><><><><><><><><><><><<><><><<><><><><><<><><<><><><><<>")
           message = "תודה, פנייתך נרשמה בהצלחה";
           delete store[sender_psid];
           break;

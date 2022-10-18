@@ -8,9 +8,12 @@ const request = require('request');
 let controller = new AbortController();
 let signal = controller.signal;
 
-let challenge = {"challenge": "3eZbrw1aBm2rZgRNFdxV2595E9CY3gmdALWMmHkvFXO7tYXAYM8P"};
 
-
+function challange(req, res)
+{
+  console.log(JSON.stringify(req.body, 0, 2)); 
+  res.status(200).send(req.body);
+}
 
   // Query 4: Create a new item and populate column values
 function start_fetch(vars2, sender_psid){
@@ -38,7 +41,7 @@ function start_fetch(vars2, sender_psid){
 
 module.exports = {
   start_fetch: start_fetch,
-  create_webhook: create_webhook,
+  challange: challange,
 }
 
 
