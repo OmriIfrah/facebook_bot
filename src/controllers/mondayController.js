@@ -28,7 +28,7 @@ function create_webhook()
 
   // Query 4: Create a new item and populate column values
 function start_fetch(vars2, sender_psid){
-  if (sender_psid== 111215241704112 || sender_psid == "111215241704112")
+  if (sender_psid == 111215241704112 || sender_psid == "111215241704112")
   {
     return;
   }
