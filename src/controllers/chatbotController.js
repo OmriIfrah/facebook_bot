@@ -104,32 +104,17 @@ function handleMessage(sender_psid, received_message) {
           message = "מה נושא הפנייה?";
           postback = true;
           response = {
-            "attachment": {
-              "type": "template",
-              "payload": {
-                "template_type": "button",
-                "text":"What do you want to do next?",
-                "buttons": [
-                  {
-                    "type": "postback",
-                    "title": "הנהלתי",
-                    "payload": "managmant",
-                  },
-                  {
-                    "type": "postback",
-                    "title": "חברתי",
-                    "payload": "friend",
-                  },
-                  {
-                    "type": "postback",
-                    "title": "תקופת מבחנים",
-                    "payload": "tests",
-                  },
-                  {
-                    "type": "postback",
-                    "title": "אחר",
-                    "payload": "diff",
-                  }
+            'attachment': {
+            'type': 'template',
+            'payload': {
+                'template_type': 'button',
+                'text': 'This is the description',
+                'buttons': [
+                     {
+                         'type': 'postback',
+                         'title': 'This is the visible text',
+                         'payload': 'This is the value you get back'
+                     }
                 ]
               }
             }
