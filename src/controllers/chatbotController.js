@@ -89,6 +89,7 @@ function handleMessage(sender_psid, received_message) {
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
     let message = "לפני";
+    let postback = false;
     if(store[sender_psid])
     {
       let step = store[sender_psid].get_step()
@@ -98,106 +99,93 @@ function handleMessage(sender_psid, received_message) {
       switch (step) {
         case 0:
           message = "איך קוראים לך? (שם מלא)";
-          response = {
-            "text": message
-          }
           break;
         case 1:
           message = "מה נושא הפנייה?";
+          postback = true;
           response = {
-            "persistent_menu":[
-              {
-                "locale":"default",
-                "disabled_surfaces": ["CUSTOMER_CHAT_PLUGIN"],
-                "composer_input_disabled": false,      
-                "call_to_actions":[
-                  {
-                    "title":"My Account",
-                    "type":"postback",
-                    "payload":"PAYBILL_PAYLOAD"
-                  }
-                ]
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type": "generic",
+                "elements": [{
+                  "title": "מה נושא הפנייה?",
+                  "subtitle": "לחץ על האפשרות המתאימה:",
+                  "buttons": [
+                    {
+                      "type": "postback",
+                      "title": "הנהלתי",
+                      "payload": "managmant",
+                    },
+                    {
+                      "type": "postback",
+                      "title": "חברתי",
+                      "payload": "friend",
+                    },
+                    {
+                      "type": "postback",
+                      "title": "תקופת מבחנים",
+                      "payload": "tests",
+                    },
+                    {
+                      "type": "postback",
+                      "title": "אחר",
+                      "payload": "diff",
+                    }
+                  ],
+                }]
               }
-            ]
+            }
           }
           break;
         case 2:
           message = "על איזה קורס מדובר?";
-          response = {
-            "text": message
-          }
           break;
         case 3:
           message = "מה שם המרצה?";
-          response = {
-            "text": message
-          }
           break;
         case 4:
           message = "באיזה קמפוס וכיתה נערכה הבחינה?";
-          response = {
-            "text": message
-          }
           break;
         case 5:
           message = "אנא כתבו את פנייתכם עכשיו";
-          response = {
-            "text": message
-          }
           break;
         case 6:
           message = "באיזה חוג?";
-          response = {
-            "text": message
-          }
           break;
         case 7:
           message = "שנה?";
-          response = {
-            "text": message
-          }
           break;
         case 8:
           message = "האם פנית לגורם מכללה בנושא?";
-          response = {
-            "text": message
-          }
           break;
         case 9:
           message = "מספר טלפון?";
-          response = {
-            "text": message
-          }
           break;
         case 10:
           message = "לשון הפנייה? כיצד תרצו שנפנה אליכם?";
-          response = {
-            "text": message
-          }
           break;
         case 11:
           message = "אימייל?";
-          response = {
-            "text": message
-          }
           break;
         case 12:
           let query = store[sender_psid].get_query();
           mondayController.start_fetch(query, sender_psid);
           //console.log("send fetch! ><><><<><><><><><<><><><><><><<><><><><><<>><><><><><><><><><><><<><><><<><><><><><<><><<><><><><<>")
           message = "תודה, פנייתך נרשמה בהצלחה";
-          response = {
-            "text": message
-          }
           delete store[sender_psid];
           break;
         default:
           message = "מצטער לא הבנתי אנא התחל מהתחלה";
-          response = {
-            "text": message
-          }
           delete store[sender_psid];
           break;
+      }
+      if (!postback)
+      {
+        response = {
+          "text": message
+        }
+        postback = false;
       }
     } 
     console.log(received_message.text);
