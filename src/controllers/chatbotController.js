@@ -108,26 +108,26 @@ function handleMessage(sender_psid, received_message) {
             'type': 'template',
             'payload': {
                 'template_type': 'button',
-                'text': 'מה נושא הפנייה?',
+                'text': 'what',
                 'buttons': [
                      {
                         'type': 'postback',
-                        'title': 'הנהלתי',
+                        'title': 'what1',
                         'payload': 'This is the value you get back1'
                      },
                      {
                         'type': 'postback',
-                        'title': 'חברתי',
+                        'title': 'what2',
                         'payload': 'This is the value you get back2'
                      },
                      {
                         'type': 'postback',
-                        'title': 'תקופת מבחנים',
+                        'title': 'what3',
                         'payload': 'This is the value you get back3'
                      },
                      {
                         'type': 'postback',
-                        'title': 'אחר',
+                        'title': 'what4',
                         'payload': 'This is the value you get back4'
                      }
                   ]
