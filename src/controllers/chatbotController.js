@@ -134,6 +134,8 @@ function handleMessage(sender_psid, received_message) {
               }
             }
           }
+          console.log("&&&&&&&&&&&&&")
+          console.log(response)
           break;
         case 2:
           message = "על איזה קורס מדובר?";
@@ -179,13 +181,15 @@ function handleMessage(sender_psid, received_message) {
       }
       if (!postback)
       {
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        console.log(postback)
         response = {
           "text": message
         }
         postback = false;
       }
     } 
-    console.log(received_message.text);
+    //console.log(received_message.text);
   }
   if(store[sender_psid])
   {
