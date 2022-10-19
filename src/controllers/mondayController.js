@@ -13,29 +13,32 @@ async function challange(req, res)
 {
   if (req.body.challange)
   {
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     console.log(JSON.stringify(req.body, 0, 2)); 
     res.status(200).send(req.body);
   }
   //// if event
-  const pulseId = req.body.event.pulseId;
-  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-  console.log(pulseId);
-  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-  let query1 = `query{ items (ids: ${pulseId}) { column_values { id type value text } } }`
+  else
+  {
+    const pulseId = req.body.event.pulseId;
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    console.log(pulseId);
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    let query1 = `query{ items (ids: ${pulseId}) { column_values { id type value text } } }`
 
-  const data = await fetch("https://api.monday.com/v2",{
-    method:"post",
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization' : api_key
-    },
-    body:JSON.stringify({
-      'query' : query1,
-    })
-  }).then(res=>res.json())
-  // call send API
-  // const senderId = data.
-
+    const data = await fetch("https://api.monday.com/v2",{
+      method:"post",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization' : api_key
+      },
+      body:JSON.stringify({
+        'query' : query1,
+      })
+    }).then(res=>res.json())
+    // call send API
+    // const senderId = data.
+  }
 
 }
 
