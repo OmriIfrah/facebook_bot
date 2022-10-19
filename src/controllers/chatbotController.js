@@ -129,7 +129,7 @@ function handleMessage(sender_psid, received_message) {
                         'type': 'postback',
                         'title': 'אחר',
                         'payload': 'This is the value you get back4'
-                     },
+                     }
                   ]
                 }
               }
