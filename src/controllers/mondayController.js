@@ -11,9 +11,11 @@ let signal = controller.signal;
 
 async function challange(req, res)
 {
-  console.log(JSON.stringify(req.body, 0, 2)); 
-  res.status(200).send(req.body);
-
+  if (req.body.challange)
+  {
+    console.log(JSON.stringify(req.body, 0, 2)); 
+    res.status(200).send(req.body);
+  }
   //// if event
   const pulseId = req.body.event.pulseId;
   console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
