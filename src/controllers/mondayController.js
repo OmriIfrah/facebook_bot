@@ -13,17 +13,16 @@ async function challange(req, res)
 {
   if (req.body.challange)
   {
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     console.log(JSON.stringify(req.body, 0, 2)); 
     res.status(200).send(req.body);
   }
-  //// if event
+
   else
   {
     const pulseId = req.body.event.pulseId;
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+   
     console.log(pulseId);
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+
     let query1 = `query{ items (ids: ${pulseId}) { column_values { id type value text } } }`
 
     const data = await fetch("https://api.monday.com/v2",{
@@ -38,6 +37,8 @@ async function challange(req, res)
     }).then(res=>res.json())
     // call send API
     // const senderId = data.
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    console.log(data);
   }
 
 }
@@ -50,7 +51,6 @@ function start_fetch(vars2, sender_psid){
   {
     return;
   }
-  let query1 = 'query{ items (ids: 3382942348) { column_values { id type value text } } }'
   let query5 = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:3316014705, item_name:$myItemName, column_values:$columnVals) { id } }';
   let vars = vars2;
   fetch ("https://api.monday.com/v2", {
