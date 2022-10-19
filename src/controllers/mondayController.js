@@ -16,7 +16,9 @@ async function challange(req, res)
 
   //// if event
   const pulseId = req.body.event.pulseId;
-
+  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+  console.log(pulseId);
+  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
   let query1 = `query{ items (ids: ${pulseId}) { column_values { id type value text } } }`
 
   const data = await fetch("https://api.monday.com/v2",{
