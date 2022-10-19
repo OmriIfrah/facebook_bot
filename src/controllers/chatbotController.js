@@ -107,33 +107,30 @@ function handleMessage(sender_psid, received_message) {
             "attachment": {
               "type": "template",
               "payload": {
-                "template_type": "generic",
-                "elements": [{
-                  "title": "מה נושא הפנייה?",
-                  "subtitle": "לחץ על האפשרות המתאימה:",
-                  "buttons": [
-                    {
-                      "type": "postback",
-                      "title": "הנהלתי",
-                      "payload": "managmant",
-                    },
-                    {
-                      "type": "postback",
-                      "title": "חברתי",
-                      "payload": "friend",
-                    },
-                    {
-                      "type": "postback",
-                      "title": "תקופת מבחנים",
-                      "payload": "tests",
-                    },
-                    {
-                      "type": "postback",
-                      "title": "אחר",
-                      "payload": "diff",
-                    }
-                  ],
-                }]
+                "template_type": "button",
+                "text":"What do you want to do next?",
+                "buttons": [
+                  {
+                    "type": "postback",
+                    "title": "הנהלתי",
+                    "payload": "managmant",
+                  },
+                  {
+                    "type": "postback",
+                    "title": "חברתי",
+                    "payload": "friend",
+                  },
+                  {
+                    "type": "postback",
+                    "title": "תקופת מבחנים",
+                    "payload": "tests",
+                  },
+                  {
+                    "type": "postback",
+                    "title": "אחר",
+                    "payload": "diff",
+                  }
+                ]
               }
             }
           }
