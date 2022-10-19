@@ -108,18 +108,32 @@ function handleMessage(sender_psid, received_message) {
             'type': 'template',
             'payload': {
                 'template_type': 'button',
-                'text': 'This is the description',
+                'text': 'מה נושא הפנייה?',
                 'buttons': [
                      {
-                         'type': 'postback',
-                         'title': 'This is the visible text',
-                         'payload': 'This is the value you get back'
-                     }
-                ]
+                        'type': 'postback',
+                        'title': 'הנהלתי',
+                        'payload': 'This is the value you get back1'
+                     },
+                     {
+                        'type': 'postback',
+                        'title': 'חברתי',
+                        'payload': 'This is the value you get back2'
+                     },
+                     {
+                        'type': 'postback',
+                        'title': 'תקופת מבחנים',
+                        'payload': 'This is the value you get back3'
+                     },
+                     {
+                        'type': 'postback',
+                        'title': 'אחר',
+                        'payload': 'This is the value you get back4'
+                     },
+                  ]
+                }
               }
             }
-          }
-          
           break;
         case 2:
           message = "על איזה קורס מדובר?";
