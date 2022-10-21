@@ -112,20 +112,20 @@ function handleMessage(sender_psid, received_message) {
                         "title": "מה נושא הפנייה שלך?",
                         "subtitle": "לחץ על האפשרות הרצויה",
                         //"image_url": "img.jpg",
-                        "buttons": [{
-                            "type": "postback",
+                        "quick_replies": [{
+                            "content_type":"text",
                             "title": "אקדמאי",
                             "payload": "academic",
                         }, {
-                            "type": "postback",
+                            "content_type":"text",
                             "title": "הנהלתי",
                             "payload": "administrative",
                         }, {
-                            "type": "postback",
+                            "content_type":"text",
                             "title": "חברתי",
                             "payload": "friendly",
                         }, {
-                            "type": "postback",
+                            "content_type":"text",
                             "title": "אחר",
                             "payload": "other",
                         }],
