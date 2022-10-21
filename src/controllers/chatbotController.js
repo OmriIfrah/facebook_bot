@@ -179,7 +179,8 @@ function handlePostback(sender_psid, received_postback) {
       store[sender_psid].step_promotion();
   }
   // Send the message to acknowledge the postback
-  callSendAPI(sender_psid, response, false);
+  let x = false
+  callSendAPI(sender_psid, response, x);
 }
 
 // Sends response messages via the Send API
