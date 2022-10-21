@@ -117,7 +117,7 @@ function handleMessage(sender_psid, received_message) {
               }
             ]
           }
-
+          callSendPostBack(sender_psid, response);
           break;
         case 2:
           message = "מה החוג שלך?";
@@ -153,6 +153,7 @@ function handleMessage(sender_psid, received_message) {
         response = {
           "text": message
         }
+        postback = false;
       }
     } 
     //console.log(received_message.text);
@@ -162,7 +163,7 @@ function handleMessage(sender_psid, received_message) {
     store[sender_psid].step_promotion();
   }
   // Send the response message
-  callSendAPI(sender_psid, response, postback);       
+  callSendAPI(sender_psid, response);       
 }
 
 // Handles messaging_postbacks events
@@ -179,34 +180,46 @@ function handlePostback(sender_psid, received_postback) {
       store[sender_psid].step_promotion();
   }
   // Send the message to acknowledge the postback
-  let x = false
-  callSendAPI(sender_psid, response, x);
+  callSendAPI(sender_psid, response);
 }
 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response, postback) {
+function callSendAPI(sender_psid, response) {
   // Construct the message body
   console.log("##################################################################################^*^*^*^*^*^*")
   console.log(response)
-  let request_body = {}
-  if (postback)
-  {
-    request_body = {
-      "recipient": {
-        "id": sender_psid
-      },
-      "messaging_type": "RESPONSE",
-      "message": response
-    }
-  }
-  else 
-  {
-    request_body = {
+  let request_body = {
       "recipient": {
         "id": sender_psid
       },
       "message": response
     }
+  // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!')
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  }); 
+}
+
+
+function callSendPostBack(sender_psid, response) {
+  // Construct the message body
+  console.log("##################################################################################^*^*^*^*^*^*")
+  console.log(response)
+  let request_body = {
+    "messaging_type": "RESPONSE",
+    "recipient": {
+      "id": sender_psid
+    },
+    "message": response
   }
   // Send the HTTP request to the Messenger Platform
   request({
