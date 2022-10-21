@@ -4,15 +4,10 @@ export class User {
         this.sender_id = sender_id;
         this.name = "";
         this.subject = "";
-        this.course = "";
-        this.teacher_name = "";
-        this.campus = "";
         this.message = "";
         this.study_group = "";
         this.year = "";
-        this.previous_application = "";
         this.phone_number = "";
-        this.sex = "";
         this.mail = "";
         this.step = 0;
     }
@@ -36,34 +31,19 @@ export class User {
             this.subject = text;
             break;
         case 3:
-            this.course = text;
+            this.study_group= text;
             break;
         case 4:
-            this.teacher_name = text;
-            break;
-        case 5:
-            this.campus = text;
-            break;
-        case 6:
-            this.recived = text;
-            break;
-        case 7:
-            this.course = text;
-            break;
-        case 8:
             this.year = text;
             break;
-        case 9:
-            this.previous_application = text;
+        case 5:
+            this.message = text;
             break;
-        case 10:
-            this.phone_number= text;
-            break;
-        case 11:
-            this.sex = text;
-            break;
-        case 12:
+        case 6:
             this.mail = text;
+            break;
+        case 7:
+            this.phone_number = text;
             break;
         default:
             break;
@@ -78,14 +58,16 @@ export class User {
     get_query()
     {
         let vars = {
-            "myItemName" : `Item = ${this.sender_id}`,
+            "myItemName" : `Item = ${this.name}`,
             "columnVals" : JSON.stringify({
               "date4" : {"date" : "2020-08-27"},
-              "text" : this.name,
+              "text" : this.sender_id,
               "text2" : this.subject,
-              "text8" : this.course,
-              "text4" : this.teacher_name,
-              "text80" : this.campus
+              "text4" : this.study_group,
+              "text8" : this.year,
+              "long_text" : this.message,
+              "email" : {email : this.mail, text: this.mail},
+              "phone" : {phone : this.phone_number, countryShortName: 'IL'}
             })
           };
         return vars;

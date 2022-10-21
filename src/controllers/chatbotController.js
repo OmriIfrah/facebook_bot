@@ -135,36 +135,21 @@ function handleMessage(sender_psid, received_message) {
           }
           break;
         case 2:
-          message = "על איזה קורס מדובר?";
+          message = "מה החוג שלך?";
           break;
         case 3:
-          message = "מה שם המרצה?";
+          message = "באיזה שנה את/ה בלימודים? (א,ב,ג)";
           break;
         case 4:
-          message = "באיזה קמפוס וכיתה נערכה הבחינה?";
+          message = "איך אנחנו יכולים לעזור?";
           break;
         case 5:
-          message = "אנא כתבו את פנייתכם עכשיו";
+          message = "מה האימייל שלך?";
           break;
         case 6:
-          message = "באיזה חוג?";
+          message = "מה מספר הטלפון שלך?";
           break;
         case 7:
-          message = "שנה?";
-          break;
-        case 8:
-          message = "האם פנית לגורם מכללה בנושא?";
-          break;
-        case 9:
-          message = "מספר טלפון?";
-          break;
-        case 10:
-          message = "לשון הפנייה? כיצד תרצו שנפנה אליכם?";
-          break;
-        case 11:
-          message = "אימייל?";
-          break;
-        case 12:
           let query = store[sender_psid].get_query();
           mondayController.start_fetch(query, sender_psid);
           //console.log("send fetch! ><><><<><><><><><<><><><><><><<><><><><><<>><><><><><><><><><><><<><><><<><><><><><<><><<><><><><<>")
