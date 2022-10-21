@@ -89,7 +89,6 @@ function handleMessage(sender_psid, received_message) {
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
     let message = "לפני";
-    let postback = false;
     if(store[sender_psid])
     {
       let step = store[sender_psid].get_step()
@@ -104,18 +103,34 @@ function handleMessage(sender_psid, received_message) {
           message = "מה נושא הפנייה?";
           postback = true;
           response = {
-            "text": "Pick a color:",
+            "text": "מה נושא הפנייה?",
             "quick_replies":[
               {
                 "content_type":"text",
-                "title":"Red",
-                "payload":"<POSTBACK_PAYLOAD>",
+                "title":"אקדמאי",
+                "payload":"academic",
               },{
                 "content_type":"text",
-                "title":"Green",
-                "payload":"<POSTBACK_PAYLOAD>",
+                "title":"הנהלתי",
+                "payload":"administrative",
+              },{
+                "content_type":"text",
+                "title":"חברתי",
+                "payload":"social",
+              },{
+                "content_type":"text",
+                "title":"אחר",
+                "payload":"other",
+              },{
+                "content_type":"text",
+                "title":"תקופת מבחנים",
+                "payload":"tests",
               }
             ]
+          }
+          if(store[sender_psid])
+          {
+            store[sender_psid].step_promotion();
           }
           callSendPostBack(sender_psid, response);
           break;
@@ -144,20 +159,14 @@ function handleMessage(sender_psid, received_message) {
         default:
           message = "מצטער לא הבנתי אנא התחל מהתחלה";
           delete store[sender_psid];
-          break;
-      }
-      if (!postback)
-      {
-        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-        console.log(postback)
-        response = {
-          "text": message
-        }
-        postback = false;
-      }
-    } 
+          break; 
+      } 
+      response = {
+        "text": message
+      } 
     //console.log(received_message.text);
-  }
+    }
+ }
   if(store[sender_psid])
   {
     store[sender_psid].step_promotion();
