@@ -25,7 +25,9 @@ async function challange(req, res)
 
     let query1 = `query{ items (ids: ${pulseId}) { column_values { id type value text } } }`
 
-    const data = await fetch("https://api.monday.com/v2",{
+    let data ={};
+
+    await fetch("https://api.monday.com/v2",{
       method:"post",
       headers: {
         'Content-Type': 'application/json',
@@ -35,10 +37,11 @@ async function challange(req, res)
         'query' : query1,
       })
     }).then(res=>res.json())
+      .then(data = res.json())
     // call send API
     // const senderId = data.
     console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-    console.log(data.items);
+    console.log(data);
   }
 
 }
