@@ -39,11 +39,34 @@ async function challange(req, res)
       //.then(res=>JSON.stringify(res, null, 2))
     // call send API
     // const senderId = data.
-    let arr = data.data.items[0].column
-    console.log(arr);
+    let arr = data.data.items[0].column_values
+    if (arr){
+      let index = get_index(arr);
+      console.log(index);
+    }
   }
 
 }
+
+function get_index(arr)
+{
+  let k = {};
+  let i = 0;
+  arr.forEach(function (item, index) {
+    if(item.id == "text44"){
+      k["massege"] = item.text;
+      i++;
+    }
+    else if(item.id == "text"){
+      k["sender_id"] = item.text;
+      i++;
+    }
+    if(i>=2)
+      return k;
+  });
+  return k;
+}
+
 
   // Query 4: Create a new item and populate column values
 function start_fetch(vars2, sender_psid){
