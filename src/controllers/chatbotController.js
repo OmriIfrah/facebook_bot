@@ -124,11 +124,11 @@ function handleMessage(sender_psid, received_message) {
                             "type": "postback",
                             "title": "חברתי",
                             "payload": "friendly",
-                        }],//, {
-                           // "type": "postback",
-                           // "title": "אחר",
-                            //"payload": "other",
-                        //}],
+                        }, {
+                            "type": "postback",
+                            "title": "אחר",
+                            "payload": "other",
+                        }],
                     }]
                 }
             }
