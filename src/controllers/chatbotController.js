@@ -124,11 +124,6 @@ function handleMessage(sender_psid, received_message) {
                     "type":"postback",
                     "title":"Postback Button3",
                     "payload":"DEVELOPER_DEFINED_PAYLOAD3"
-                  },
-                  {
-                    "type":"postback",
-                    "title":"Postback Button4",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD4"
                   }
                 ]
               }
