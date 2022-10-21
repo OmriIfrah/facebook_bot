@@ -121,14 +121,14 @@ function handleMessage(sender_psid, received_message) {
                             "title": "הנהלתי",
                             "payload": "administrative",
                         }, {
-                          "type": "postback",
-                          "title": "חברתי",
-                          "payload": "friendly",
-                        }, {
-                          "type": "postback",
-                          "title": "אחר",
-                          "payload": "other",
-                        }],
+                            "type": "postback",
+                            "title": "חברתי",
+                            "payload": "friendly",
+                        }],//, {
+                           // "type": "postback",
+                           // "title": "אחר",
+                            //"payload": "other",
+                        //}],
                     }]
                 }
             }
