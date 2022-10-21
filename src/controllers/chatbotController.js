@@ -107,7 +107,7 @@ function handleMessage(sender_psid, received_message) {
             "attachment": {
                 "type": "template",
                 "payload": {
-                    "template_type": "List",
+                    "template_type": "Generic",
                     "elements": [{
                         "title": "מה נושא הפנייה שלך?",
                         "subtitle": "לחץ על האפשרות הרצויה",
