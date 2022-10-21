@@ -203,22 +203,33 @@ function callSendPostBack(sender_psid, response) {
     "persistent_menu": [
       {
           "locale": "default",
+          "title": "מה נושא הפנייה?",
           "composer_input_disabled": true,
           "call_to_actions": [
               {
                   "type": "postback",
-                  "title": "Talk to an agent",
+                  "title": "אקדמאי",
                   "payload": "CARE_HELP"
               },
               {
                   "type": "postback",
-                  "title": "Outfit suggestions",
+                  "title": "הנהלתי",
                   "payload": "CURATION"
               },
               {
-                "type": "postback",
-                "title": "Outfit suggestions2",
-                "payload": "CURATION2"
+                  "type": "postback",
+                  "title": "חברתי",
+                  "payload": "CURATION2"
+              },
+              {
+                  "type": "postback",
+                  "title": "אחר",
+                  "payload": "CURATION1"
+              },
+              {
+                  "type": "postback",
+                  "title": "תקופת מבחנים",
+                  "payload": "CURATION3"
               }
           ]
       }
