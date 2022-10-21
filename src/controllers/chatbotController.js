@@ -104,33 +104,19 @@ function handleMessage(sender_psid, received_message) {
           message = "מה נושא הפנייה?";
           postback = true;
           response = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "Generic",
-                    "elements": [{
-                        "title": "מה נושא הפנייה שלך?",
-                        "subtitle": "לחץ על האפשרות הרצויה",
-                        //"image_url": "img.jpg",
-                        "buttons": [{
-                            "type": "postback",
-                            "title": "אקדמאי",
-                            "payload": "academic",
-                        }, {
-                            "type": "postback",
-                            "title": "הנהלתי",
-                            "payload": "administrative",
-                        }, {
-                            "type": "postback",
-                            "title": "חברתי",
-                            "payload": "friendly",
-                        }],// {
-                           // "type": "postback",
-                           // "title": "אחר",
-                            //"payload": "other",
-                        //}],
-                    }]
-                }
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"button",
+                "text":"Try the postback button!",
+                "buttons":[
+                  {
+                    "type":"postback",
+                    "title":"Postback Button",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                  }
+                ]
+              }
             }
           }
           break;
