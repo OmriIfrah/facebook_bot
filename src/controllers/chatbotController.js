@@ -114,7 +114,12 @@ function handleMessage(sender_psid, received_message) {
                         'type': 'postback',
                         'title': 'what1',
                         'payload': 'This is the value you get back1'
-                     }
+                     },
+                     {
+                      'type': 'postback',
+                      'title': 'what2',
+                      'payload': 'This is the value you get back2'
+                    }
                   ]
                 }
               }
