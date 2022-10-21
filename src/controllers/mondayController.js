@@ -48,7 +48,7 @@ async function challange(req, res)
 
 function get_index(arr)
 {
-  k = {};
+  let k = {};
   let i = 0;
   arr.forEach(function (item, index) {
     if(item.id == "text44"){
