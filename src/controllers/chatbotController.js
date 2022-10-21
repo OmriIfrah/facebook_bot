@@ -107,25 +107,25 @@ function handleMessage(sender_psid, received_message) {
             "attachment": {
                 "type": "template",
                 "payload": {
-                    "template_type": "generic",
+                    "template_type": "List",
                     "elements": [{
                         "title": "מה נושא הפנייה שלך?",
                         "subtitle": "לחץ על האפשרות הרצויה",
                         //"image_url": "img.jpg",
-                        "quick_replies": [{
-                            "content_type":"text",
+                        "buttons": [{
+                            "type": "postback",
                             "title": "אקדמאי",
                             "payload": "academic",
                         }, {
-                            "content_type":"text",
+                            "type": "postback",
                             "title": "הנהלתי",
                             "payload": "administrative",
                         }, {
-                            "content_type":"text",
+                            "type": "postback",
                             "title": "חברתי",
                             "payload": "friendly",
                         }, {
-                            "content_type":"text",
+                            "type": "postback",
                             "title": "אחר",
                             "payload": "other",
                         }],
