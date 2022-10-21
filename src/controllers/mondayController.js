@@ -38,7 +38,7 @@ async function challange(req, res)
     // call send API
     // const senderId = data.
     console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-    console.log(data.items);
+    console.log(data);
   }
 
 }
