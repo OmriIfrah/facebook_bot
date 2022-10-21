@@ -100,7 +100,6 @@ function handleMessage(sender_psid, received_message) {
           message = "איך קוראים לך? (שם מלא)";
           break;
         case 1:
-          //message = "מה נושא הפנייה?";
           response = {
             "text": "מה נושא הפנייה?",
             "quick_replies":[
@@ -127,15 +126,11 @@ function handleMessage(sender_psid, received_message) {
               }
             ]
           }
-            if(store[sender_psid])
-            {
-              store[sender_psid].step_promotion();
-            }
-          callSendPostBack(sender_psid, response);
           if(store[sender_psid])
           {
             store[sender_psid].step_promotion();
           }
+          callSendPostBack(sender_psid, response);
           return;
         case 2:
           message = "מה החוג שלך?";
@@ -227,8 +222,11 @@ function callSendPostBack(sender_psid, response) {
   console.log("##################################################################################^*^*^*^*^*^*")
   console.log(response)
   let request_body = {
-    "psid": sender_psid,
-    "persistent_menu": response
+    "messaging_type": "RESPONSE",
+    "recipient": {
+      "id": sender_psid
+    },
+    "message": response
   }
   // Send the HTTP request to the Messenger Platform
   request({
