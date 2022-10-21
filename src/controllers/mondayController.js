@@ -36,13 +36,10 @@ async function challange(req, res)
       })
     })
       .then(res => res.json())
-      .then(res=>JSON.stringify(res, null, 2))
+      //.then(res=>JSON.stringify(res, null, 2))
     // call send API
     // const senderId = data.
-    console.log(data);
-    console.log("--------------------------------------");
-    let d = JSON.parse(data);
-    console.log("data " + d.data.items[0].column_values[0]);
+    console.log(data.data);
   }
 
 }
