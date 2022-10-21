@@ -101,7 +101,6 @@ function handleMessage(sender_psid, received_message) {
           break;
         case 1:
           message = "מה נושא הפנייה?";
-          postback = true;
           response = {
             "text": "מה נושא הפנייה?",
             "quick_replies":[
