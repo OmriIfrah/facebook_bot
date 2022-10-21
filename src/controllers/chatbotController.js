@@ -119,6 +119,7 @@ function handleMessage(sender_psid, received_message) {
               }
             }
           }
+          
           break;
         case 2:
           message = "מה החוג שלך?";
