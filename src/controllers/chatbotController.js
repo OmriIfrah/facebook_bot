@@ -100,33 +100,30 @@ function handleMessage(sender_psid, received_message) {
           message = "איך קוראים לך? (שם מלא)";
           break;
         case 1:
-          message = "מה נושא הפנייה?";
-          response = {
-            "text": "מה נושא הפנייה?",
-            "quick_replies":[
-              {
-                "content_type":"text",
-                "title":"אקדמאי",
-                "payload":"academic",
-              },{
-                "content_type":"text",
-                "title":"הנהלתי",
-                "payload":"administrative",
-              },{
-                "content_type":"text",
-                "title":"חברתי",
-                "payload":"social",
-              },{
-                "content_type":"text",
-                "title":"אחר",
-                "payload":"other",
-              },{
-                "content_type":"text",
-                "title":"תקופת מבחנים",
-                "payload":"tests",
-              }
-            ]
-          }
+          //message = "מה נושא הפנייה?";
+          response = [
+            {
+                "locale": "default",
+                "composer_input_disabled": true,
+                "call_to_actions": [
+                    {
+                        "type": "postback",
+                        "title": "Talk to an agent",
+                        "payload": "CARE_HELP"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Outfit suggestions",
+                        "payload": "CURATION"
+                    },
+                    {
+                      "type": "postback",
+                      "title": "Outfit suggestions2",
+                      "payload": "CURATION2"
+                    }
+                ]
+            }
+        ]
           if(store[sender_psid])
           {
             store[sender_psid].step_promotion();
@@ -223,11 +220,8 @@ function callSendPostBack(sender_psid, response) {
   console.log("##################################################################################^*^*^*^*^*^*")
   console.log(response)
   let request_body = {
-    "messaging_type": "RESPONSE",
-    "recipient": {
-      "id": sender_psid
-    },
-    "message": response
+    "psid": sender_psid,
+    "persistent_menu": response
   }
   // Send the HTTP request to the Messenger Platform
   request({
