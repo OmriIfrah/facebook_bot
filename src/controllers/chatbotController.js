@@ -104,26 +104,27 @@ function handleMessage(sender_psid, received_message) {
           message = "מה נושא הפנייה?";
           postback = true;
           response = {
-            'attachment': {
-            'type': 'template',
-            'payload': {
-                'template_type': 'button',
-                'text': 'what',
-                'buttons': [
-                     {
-                        'type': 'postback',
-                        'title': 'what1',
-                        'payload': 'This is the value you get back1'
-                     },
-                     {
-                      'type': 'postback',
-                      'title': 'what2',
-                      'payload': 'This is the value you get back2'
-                    }
-                  ]
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": "Our Menu",
+                        "subtitle": "Click buttons to see more",
+                        //"image_url": "img.jpg",
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "Coffee",
+                            "payload": "coffee",
+                        }, {
+                            "type": "postback",
+                            "title": "Tea",
+                            "payload": "tea",
+                        }],
+                    }]
                 }
-              }
             }
+          }
           break;
         case 2:
           message = "על איזה קורס מדובר?";
