@@ -101,14 +101,42 @@ function handleMessage(sender_psid, received_message) {
           break;
         case 1:
           //message = "מה נושא הפנייה?";
-          response = ""
+          response = {
+            "text": "מה נושא הפנייה?",
+            "quick_replies":[
+              {
+                "content_type":"text",
+                "title":"אקדמאי",
+                "payload":"academic",
+              },{
+                "content_type":"text",
+                "title":"הנהלתי",
+                "payload":"administrative",
+              },{
+                "content_type":"text",
+                "title":"חברתי",
+                "payload":"social",
+              },{
+                "content_type":"text",
+                "title":"אחר",
+                "payload":"other",
+              },{
+                "content_type":"text",
+                "title":"תקופת מבחנים",
+                "payload":"tests",
+              }
+            ]
+          }
+            if(store[sender_psid])
+            {
+              store[sender_psid].step_promotion();
+            }
+          callSendPostBack(sender_psid, response);
           if(store[sender_psid])
           {
             store[sender_psid].step_promotion();
           }
-          callSendPostBack(sender_psid, response);
           return;
-          //break;
         case 2:
           message = "מה החוג שלך?";
           break;
@@ -200,44 +228,11 @@ function callSendPostBack(sender_psid, response) {
   console.log(response)
   let request_body = {
     "psid": sender_psid,
-    "persistent_menu": [
-      {
-          "locale": "default",
-          "title": "מה נושא הפנייה?",
-          "composer_input_disabled": true,
-          "call_to_actions": [
-              {
-                  "type": "postback",
-                  "title": "אקדמאי",
-                  "payload": "CARE_HELP"
-              },
-              {
-                  "type": "postback",
-                  "title": "הנהלתי",
-                  "payload": "CURATION"
-              },
-              {
-                  "type": "postback",
-                  "title": "חברתי",
-                  "payload": "CURATION2"
-              },
-              {
-                  "type": "postback",
-                  "title": "אחר",
-                  "payload": "CURATION1"
-              },
-              {
-                  "type": "postback",
-                  "title": "תקופת מבחנים",
-                  "payload": "CURATION3"
-              }
-          ]
-      }
-    ]
+    "persistent_menu": response
   }
   // Send the HTTP request to the Messenger Platform
   request({
-    "uri": "https://graph.facebook.com/v2.6/me/custom_user_settings",
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
     "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
     "method": "POST",
     "json": request_body
