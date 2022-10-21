@@ -109,17 +109,25 @@ function handleMessage(sender_psid, received_message) {
                 "payload": {
                     "template_type": "generic",
                     "elements": [{
-                        "title": "Our Menu",
-                        "subtitle": "Click buttons to see more",
+                        "title": "מה נושא הפנייה שלך?",
+                        "subtitle": "לחץ על האפשרות הרצויה",
                         //"image_url": "img.jpg",
                         "buttons": [{
                             "type": "postback",
-                            "title": "Coffee",
-                            "payload": "coffee",
+                            "title": "אקדמאי",
+                            "payload": "academic",
                         }, {
                             "type": "postback",
-                            "title": "Tea",
-                            "payload": "tea",
+                            "title": "הנהלתי",
+                            "payload": "administrative",
+                        }, {
+                          "type": "postback",
+                          "title": "חברתי",
+                          "payload": "friendly",
+                        }, {
+                          "type": "postback",
+                          "title": "אחר",
+                          "payload": "other",
                         }],
                     }]
                 }
