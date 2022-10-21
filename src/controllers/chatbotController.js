@@ -117,12 +117,12 @@ function handleMessage(sender_psid, received_message) {
                 "payload":"social",
               },{
                 "content_type":"text",
-                "title":"אחר",
-                "payload":"other",
-              },{
-                "content_type":"text",
                 "title":"תקופת מבחנים",
                 "payload":"tests",
+              },{
+                "content_type":"text",
+                "title":"אחר",
+                "payload":"other",
               }
             ]
           }
