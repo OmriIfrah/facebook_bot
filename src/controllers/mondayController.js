@@ -39,10 +39,10 @@ async function challange(req, res)
       .then(res=>JSON.stringify(res, null, 2))
     // call send API
     // const senderId = data.
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    console.log(data);
+    console.log("--------------------------------------");
     let d = JSON.parse(data);
-    console.log("data " + d.data);
-    console.log("items " + d.items);
+    console.log("data " + d.data.items);
   }
 
 }
