@@ -34,7 +34,7 @@ async function challange(req, res)
       body:JSON.stringify({
         'query' : query1,
       })
-    }).then(res=>JSON.stringify(res))
+    }).then(res=>JSON.stringify(res, null, 2))
     // call send API
     // const senderId = data.
     console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
