@@ -104,30 +104,18 @@ function handleMessage(sender_psid, received_message) {
           message = "מה נושא הפנייה?";
           postback = true;
           response = {
-            "attachment":{
-              "type":"template",
-              "payload":{
-                "template_type":"button",
-                "text":"Try the postback button!",
-                "buttons":[
-                  {
-                    "type":"postback",
-                    "title":"Postback Button1",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD1"
-                  },
-                  {
-                    "type":"postback",
-                    "title":"Postback Button2",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD2"
-                  },
-                  {
-                    "type":"postback",
-                    "title":"Postback Button3",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD3"
-                  }
-                ]
+            "text": "Pick a color:",
+            "quick_replies":[
+              {
+                "content_type":"text",
+                "title":"Red",
+                "payload":"<POSTBACK_PAYLOAD>",
+              },{
+                "content_type":"text",
+                "title":"Green",
+                "payload":"<POSTBACK_PAYLOAD>",
               }
-            }
+            ]
           }
 
           break;
@@ -165,7 +153,6 @@ function handleMessage(sender_psid, received_message) {
         response = {
           "text": message
         }
-        postback = false;
       }
     } 
     //console.log(received_message.text);
@@ -175,7 +162,7 @@ function handleMessage(sender_psid, received_message) {
     store[sender_psid].step_promotion();
   }
   // Send the response message
-  callSendAPI(sender_psid, response);       
+  callSendAPI(sender_psid, response, postback);       
 }
 
 // Handles messaging_postbacks events
@@ -192,19 +179,33 @@ function handlePostback(sender_psid, received_postback) {
       store[sender_psid].step_promotion();
   }
   // Send the message to acknowledge the postback
-  callSendAPI(sender_psid, response);
+  callSendAPI(sender_psid, response, false);
 }
 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response) {
+function callSendAPI(sender_psid, response, postback) {
   // Construct the message body
   console.log("##################################################################################^*^*^*^*^*^*")
   console.log(response)
-  let request_body = {
-    "recipient": {
-      "id": sender_psid
-    },
-    "message": response
+  let request_body = {}
+  if (postback)
+  {
+    request_body = {
+      "recipient": {
+        "id": sender_psid
+      },
+      "messaging_type": "RESPONSE",
+      "message": response
+    }
+  }
+  else 
+  {
+    request_body = {
+      "recipient": {
+        "id": sender_psid
+      },
+      "message": response
+    }
   }
   // Send the HTTP request to the Messenger Platform
   request({
