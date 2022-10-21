@@ -112,14 +112,29 @@ function handleMessage(sender_psid, received_message) {
                 "buttons":[
                   {
                     "type":"postback",
-                    "title":"Postback Button",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                    "title":"Postback Button1",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD1"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Postback Button2",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD2"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Postback Button3",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD3"
+                  },
+                  {
+                    "type":"postback",
+                    "title":"Postback Button4",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD4"
                   }
                 ]
               }
             }
           }
-          
+
           break;
         case 2:
           message = "מה החוג שלך?";
