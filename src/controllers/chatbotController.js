@@ -101,35 +101,14 @@ function handleMessage(sender_psid, received_message) {
           break;
         case 1:
           //message = "מה נושא הפנייה?";
-          response = [
-            {
-                "locale": "default",
-                "composer_input_disabled": true,
-                "call_to_actions": [
-                    {
-                        "type": "postback",
-                        "title": "Talk to an agent",
-                        "payload": "CARE_HELP"
-                    },
-                    {
-                        "type": "postback",
-                        "title": "Outfit suggestions",
-                        "payload": "CURATION"
-                    },
-                    {
-                      "type": "postback",
-                      "title": "Outfit suggestions2",
-                      "payload": "CURATION2"
-                    }
-                ]
-            }
-        ]
+          response = ""
           if(store[sender_psid])
           {
             store[sender_psid].step_promotion();
           }
           callSendPostBack(sender_psid, response);
-          break;
+          return;
+          //break;
         case 2:
           message = "מה החוג שלך?";
           break;
@@ -221,7 +200,29 @@ function callSendPostBack(sender_psid, response) {
   console.log(response)
   let request_body = {
     "psid": sender_psid,
-    "persistent_menu": response
+    "persistent_menu": [
+      {
+          "locale": "default",
+          "composer_input_disabled": true,
+          "call_to_actions": [
+              {
+                  "type": "postback",
+                  "title": "Talk to an agent",
+                  "payload": "CARE_HELP"
+              },
+              {
+                  "type": "postback",
+                  "title": "Outfit suggestions",
+                  "payload": "CURATION"
+              },
+              {
+                "type": "postback",
+                "title": "Outfit suggestions2",
+                "payload": "CURATION2"
+              }
+          ]
+      }
+    ]
   }
   // Send the HTTP request to the Messenger Platform
   request({
