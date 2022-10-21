@@ -42,7 +42,7 @@ async function challange(req, res)
     console.log(data);
     console.log("--------------------------------------");
     let d = JSON.parse(data);
-    console.log("data " + d.data.items);
+    console.log("data " + d.data.items[0].column_values[0]);
   }
 
 }
