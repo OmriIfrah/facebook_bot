@@ -52,10 +52,10 @@ async function challange(req, res)
 
   // Query 4: Create a new item and populate column values
 function start_fetch(vars2, sender_psid){
-  if (sender_psid == 111215241704112 || sender_psid == "111215241704112")
-  {
-    return;
-  }
+  //if (sender_psid == 111215241704112 || sender_psid == "111215241704112")
+  //{
+  //  return;
+  //}
   let query5 = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:3316014705, item_name:$myItemName, column_values:$columnVals) { id } }';
   let vars = vars2;
   fetch ("https://api.monday.com/v2", {

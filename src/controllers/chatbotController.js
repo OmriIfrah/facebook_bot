@@ -80,6 +80,24 @@ let postWebhook = (req, res) => {
   }
 }
 
+function verifyRequestSignature(req, res, buf) {
+  var signature = req.headers["x-hub-signature-256"];
+  if (!signature) {
+    return false;;
+  } else {
+    var elements = signature.split("=");
+    var signatureHash = elements[1];
+    var expectedHash = crypto
+      .createHmac("sha256", config.appSecret)
+      .update(buf)
+      .digest("hex");
+    if (signatureHash != expectedHash) {
+      return false;
+    }
+  }
+  return true;
+}
+
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
 
@@ -166,7 +184,6 @@ function handleMessage(sender_psid, received_message) {
           }
           let query = store[sender_psid].get_query();
           mondayController.start_fetch(query, sender_psid);
-          //console.log("send fetch! ><><><<><><><><><<><><><><><><<><><><><><<>><><><><><><><><><><><<><><><<><><><><><<><><<><><><><<>")
           message = "תודה, פנייתך נרשמה בהצלחה";
           delete store[sender_psid];
           break;
