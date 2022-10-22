@@ -60,7 +60,7 @@ export class User {
         let vars = {
             "myItemName" : this.name,
             "columnVals" : JSON.stringify({
-              "date4" : {"date" : Date(timestamp).toLocaleDateString('en-GB')},
+              "date4" : {"date" : (new Date(timestamp).toLocaleDateString('en-GB'))},
               "text" : this.sender_id,
               "text2" : this.subject,
               "text4" : this.study_group,
