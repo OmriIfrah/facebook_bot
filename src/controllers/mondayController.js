@@ -36,9 +36,9 @@ async function challange(req, res)
       })
     })
       .then(res => res.json())
-      .then(res=>JSON.stringify(res, null, 2))
+      //.then(res=>JSON.stringify(res, null, 2))
 
-    console.log(data);
+    //console.log(data);
     // call send API
     // const senderId = data.
     let sender_id = data.data.items[0].column_values[1].text
