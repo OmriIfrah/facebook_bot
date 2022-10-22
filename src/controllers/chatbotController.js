@@ -143,9 +143,25 @@ function handleMessage(sender_psid, received_message) {
           break;
         case 5:
           message = "מה האימייל שלך?";
+          if (!validateEmail(message))
+          {
+            response = {
+              "text": "מייל לא תקין אנא נסה שוב"
+            } 
+            callSendAPI(sender_psid, response);
+            return;
+          }
           break;
         case 6:
           message = "מה מספר הטלפון שלך?";
+          if(! (message.match(/\d/g).length===10))
+          {
+            response = {
+              "text": "(עשר ספרות) מספר טלפון לא תקין אנא נסה שוב"
+            } 
+            callSendAPI(sender_psid, response);
+            return;
+          }
           break;
         case 7:
           let query = store[sender_psid].get_query();
@@ -242,20 +258,9 @@ function callSendPostBack(sender_psid, response) {
   }); 
 }
 
-function is_heb(Field) {
-  // First choose the required validation
-
-  HebrewChars = new RegExp("^[\u0590-\u05FF]+$");
-  AlphaNumericChars = new RegExp("^[a-zA-Z0-9\-]+$");
-  EnglishChars = new RegExp("^[a-zA-Z\-]+$");
-  LegalChars = new RegExp("^[a-zA-Z\-\u0590-\u05FF ]+$"); //Note that this one allows space 
-
-  // Then use it
-
-  if (!LegalChars.test(Field)) {
-      return false;
-  } else
-      return true;
+function validateEmail(email) {
+  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
 }
   
 module.exports = {

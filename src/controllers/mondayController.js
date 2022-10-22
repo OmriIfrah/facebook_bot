@@ -36,11 +36,7 @@ async function challange(req, res)
       })
     })
       .then(res => res.json())
-      //.then(res=>JSON.stringify(res, null, 2))
 
-    //console.log(data);
-    // call send API
-    // const senderId = data.
     let sender_id = data.data.items[0].column_values[1].text
     let response = data.data.items[0].column_values[0].text
     if (sender_id && response)
@@ -50,32 +46,9 @@ async function challange(req, res)
       }
       sendMessageToFacebook(sender_id, response); 
     }
-    //  let index = get_index(arr);
-    //  console.log(index);
-    //}
   }
 
 }
-
-function get_index(arr)
-{
-  let k = {};
-  let i = 0;
-  arr.forEach(function (item, index) {
-    if(item.id == "text44"){
-      k["massege"] = item.text;
-      i++;
-    }
-    else if(item.id == "text"){
-      k["sender_id"] = item.text;
-      i++;
-    }
-    if(i>=2)
-      return k;
-  });
-  return k;
-}
-
 
   // Query 4: Create a new item and populate column values
 function start_fetch(vars2, sender_psid){
@@ -131,31 +104,3 @@ module.exports = {
   start_fetch: start_fetch,
   challange: challange,
 }
-
-
-
-
-/*function start_fetch(vars) {
-  // Construct the message body
-  let query5 = 'mutation ($myItemName: String!, $columnVals: JSON!) { create_item (board_id:3316014705, item_name:$myItemName, column_values:$columnVals) { id } }';
-  let request_body = JSON.stringify({
-    'query' : query5,
-    'variables' : JSON.stringify(vars)
-})
-  // Send the HTTP request to the Messenger Platform
-  request({
-    "uri": "https://api.monday.com/v2",
-    "method": "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization' : api_key,
-  },
-    "body": request_body
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('message sent!')
-    } else {
-      console.error("Unable to send message:" + err);
-    }
-  }); 
-}*/
