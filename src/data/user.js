@@ -57,10 +57,12 @@ export class User {
 
     get_query(timestamp)
     {
+        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+        console.log(new Date(timestamp).toLocaleDateString('en-GB'))
         let vars = {
             "myItemName" : this.name,
             "columnVals" : JSON.stringify({
-              "date4" : {"date" : (new Date(timestamp).toLocaleDateString('en-GB'))},
+              "date4" : {"date" : "2022-09-19"},
               "text" : this.sender_id,
               "text2" : this.subject,
               "text4" : this.study_group,
@@ -72,5 +74,4 @@ export class User {
           };
         return vars;
     }
-    
 }
