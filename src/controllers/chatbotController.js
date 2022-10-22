@@ -182,7 +182,7 @@ function handleMessage(sender_psid, received_message) {
             callSendAPI(sender_psid, response);
             return;
           }
-          let query = store[sender_psid].get_query();
+          let query = store[sender_psid].get_query(received_message.time);
           mondayController.start_fetch(query, sender_psid);
           message = "תודה, פנייתך נרשמה בהצלחה";
           delete store[sender_psid];
