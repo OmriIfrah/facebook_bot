@@ -57,12 +57,11 @@ export class User {
 
     get_query(timestamp)
     {
-        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-        console.log(new Date(timestamp).toLocaleDateString('en-GB'))
+        let currentDate = new Date().toJSON().slice(0, 10);
         let vars = {
             "myItemName" : this.name,
             "columnVals" : JSON.stringify({
-              "date4" : {"date" : "2022-09-19"},
+              "date4" : {"date" : currentDate},
               "text" : this.sender_id,
               "text2" : this.subject,
               "text4" : this.study_group,
@@ -73,5 +72,16 @@ export class User {
             })
           };
         return vars;
+    }
+
+    get_date()
+    {  
+        // Calculate today's date
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let currentDate = `${year}-${month}-${day}`;
+        return currentDate;
     }
 }
