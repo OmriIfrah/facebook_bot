@@ -143,7 +143,9 @@ function handleMessage(sender_psid, received_message) {
           break;
         case 5:
           message = "מה האימייל שלך?";
-          if (!validateEmail(message))
+          break;
+        case 6:
+          if (!validateEmail((received_message.text)))
           {
             response = {
               "text": "מייל לא תקין אנא נסה שוב"
@@ -151,10 +153,10 @@ function handleMessage(sender_psid, received_message) {
             callSendAPI(sender_psid, response);
             return;
           }
-          break;
-        case 6:
           message = "מה מספר הטלפון שלך?";
-          if(! (message.match(/\d/g).length===10))
+          break;
+        case 7:
+          if(! ((received_message.text).match(/\d/g).length===10))
           {
             response = {
               "text": "(עשר ספרות) מספר טלפון לא תקין אנא נסה שוב"
@@ -162,8 +164,6 @@ function handleMessage(sender_psid, received_message) {
             callSendAPI(sender_psid, response);
             return;
           }
-          break;
-        case 7:
           let query = store[sender_psid].get_query();
           mondayController.start_fetch(query, sender_psid);
           //console.log("send fetch! ><><><<><><><><><<><><><><><><<><><><><><<>><><><><><><><><><><><<><><><<><><><><><<><><<><><><><<>")
