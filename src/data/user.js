@@ -58,7 +58,7 @@ export class User {
     get_query()
     {
         let vars = {
-            "myItemName" : `Item = ${this.name}`,
+            "myItemName" : this.name,
             "columnVals" : JSON.stringify({
               "date4" : {"date" : "2020-08-27"},
               "text" : this.sender_id,

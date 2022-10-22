@@ -41,8 +41,15 @@ async function challange(req, res)
     console.log(data);
     // call send API
     // const senderId = data.
-    //let arr = data.data.items[0].column_values
-    //if (arr){
+    let sender_id = data.data.items[0].column_values[1].text
+    let response = data.data.items[0].column_values[0].text
+    if (sender_id && response)
+    {
+      response = {
+        "text": response
+      }
+      sendMessageToFacebook(sender_id, response); 
+    }
     //  let index = get_index(arr);
     //  console.log(index);
     //}
@@ -93,6 +100,32 @@ function start_fetch(vars2, sender_psid){
     .then(res => res.json())
     .then(res => console.log(JSON.stringify(res, null, 2)))
   }
+
+// Sends response messages via the Send API
+function sendMessageToFacebook(sender_psid, response) {
+  // Construct the message body
+  console.log(response)
+  let request_body = {
+      "recipient": {
+        "id": sender_psid
+      },
+      "message": response
+    }
+  // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!')
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  }); 
+}
+
 
 module.exports = {
   start_fetch: start_fetch,
