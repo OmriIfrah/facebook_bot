@@ -23,7 +23,7 @@ async function challange(req, res)
    
     console.log(pulseId);
 
-    let query1 = `query{ items (ids: ${pulseId}) { column_values { id type value text } } }`
+    let query1 = `query{ items (ids: ${pulseId}) { column_values (ids: [text, text44] ) { id type value text } } }` // text = sender_id , text44 = message to send
 
     const data = await fetch("https://api.monday.com/v2",{
       method:"post",
@@ -36,14 +36,16 @@ async function challange(req, res)
       })
     })
       .then(res => res.json())
-      //.then(res=>JSON.stringify(res, null, 2))
+      .then(res=>JSON.stringify(res, null, 2))
+
+    console.log(data);
     // call send API
     // const senderId = data.
-    let arr = data.data.items[0].column_values
-    if (arr){
-      let index = get_index(arr);
-      console.log(index);
-    }
+    //let arr = data.data.items[0].column_values
+    //if (arr){
+    //  let index = get_index(arr);
+    //  console.log(index);
+    //}
   }
 
 }
