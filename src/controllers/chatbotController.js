@@ -177,7 +177,7 @@ function handleMessage(sender_psid, received_message) {
           if(! ((received_message.text).match(/\d/g).length===10))
           {
             response = {
-              "text": "(עשר ספרות) מספר טלפון לא תקין אנא נסה שוב"
+              "text": "מספר טלפון לא תקין אנא נסה שוב"
             } 
             callSendAPI(sender_psid, response);
             return;
