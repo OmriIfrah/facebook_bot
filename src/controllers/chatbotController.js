@@ -214,7 +214,7 @@ function handlePostback(sender_psid, received_postback) {
   // Set the response based on the postback payload
   if (payload === 'start') 
   {
-    response = { "text": " שלום הגעתם לבוט אגודת הסטודנטים של תל חי יש לענות על שאלות הבוט. \n מה השם שלך?" }
+    response = { "text": " שלום הגעתם לבוט אגודת הסטודנטים של תל חי יש לענות על שאלות הבוט. \n איך קוראים לך? (שם מלא)" }
     if(store[sender_psid])
       store[sender_psid].step_promotion();
   }
