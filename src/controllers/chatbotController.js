@@ -195,7 +195,6 @@ function handleMessage(sender_psid, received_message) {
       response = {
         "text": message
       } 
-    //console.log(received_message.text);
     }
  }
   if(store[sender_psid])
@@ -251,8 +250,6 @@ function callSendAPI(sender_psid, response) {
 
 function callSendPostBack(sender_psid, response) {
   // Construct the message body
-  console.log("##################################################################################^*^*^*^*^*^*")
-  console.log(response)
   let request_body = {
     "messaging_type": "RESPONSE",
     "recipient": {
